@@ -146,21 +146,13 @@ public class CreeperBlock implements Replaceable {
       return new CreeperBisected(state);
     if (data instanceof Piston || data instanceof PistonHead) return new CreeperPiston(state);
 
-    switch (state.getType()) {
-      case AIR:
-      case CAVE_AIR:
-      case FIRE:
-      case VOID_AIR:
-        return null;
-      case GRASS_BLOCK:
-        return new CreeperGrass(state);
-      case STONE_BRICKS:
-        return new CreeperBrick(state);
-      case STONE:
-        return new CreeperStone(state);
-      default:
-        return new CreeperBlock(state);
-    }
+    return switch (state.getType()) {
+      case AIR, CAVE_AIR, FIRE, VOID_AIR -> null;
+      case GRASS_BLOCK -> new CreeperGrass(state);
+      case STONE_BRICKS -> new CreeperBrick(state);
+      case STONE -> new CreeperStone(state);
+      default -> new CreeperBlock(state);
+    };
   }
 
   /*

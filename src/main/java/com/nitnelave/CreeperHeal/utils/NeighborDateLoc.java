@@ -27,7 +27,7 @@ public class NeighborDateLoc extends NeighborFinder<DateLoc> {
     if (list != null) {
       World w = loc.getWorld();
       for (DateLoc dl : list)
-        if (dl.getWorld() == w && loc.distance(dl.getLocation()) < 10) return dl;
+        if (dl.getWorld() == w && loc.distance(dl.location()) < 10) return dl;
     }
     return null;
   }
@@ -45,7 +45,7 @@ public class NeighborDateLoc extends NeighborFinder<DateLoc> {
     map.values()
         .removeIf(
             list -> {
-              list.removeIf(dateLoc -> dateLoc.getTime().before(delay));
+              list.removeIf(dateLoc -> dateLoc.date().before(delay));
               return list.isEmpty();
             });
   }

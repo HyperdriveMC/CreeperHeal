@@ -10,20 +10,7 @@ import java.util.Date;
  *
  * @author nitnelave
  */
-public class DateLoc {
-  private final Date date;
-  private final Location location;
-
-  /**
-   * Basic constructor.
-   *
-   * @param date The date to be stored.
-   * @param location The location to be stored.
-   */
-  public DateLoc(Date date, Location location) {
-    this.date = date;
-    this.location = location;
-  }
+public record DateLoc(Date date, Location location) {
 
   /**
    * Get the stored date.

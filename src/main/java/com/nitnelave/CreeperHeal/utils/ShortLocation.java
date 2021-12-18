@@ -51,8 +51,7 @@ public class ShortLocation {
   @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
-    if (obj instanceof ShortLocation) {
-      ShortLocation other = (ShortLocation) obj;
+    if (obj instanceof ShortLocation other) {
       return x == other.x && y == other.y && z == other.z;
     }
     return false;

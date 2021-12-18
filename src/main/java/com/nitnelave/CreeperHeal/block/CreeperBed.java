@@ -19,10 +19,9 @@ class CreeperBed extends CreeperMultiblock {
     super(blockState);
 
     BlockData blockData = blockState.getBlockData();
-    if (!(blockData instanceof Bed))
+    if (!(blockData instanceof Bed bed))
       throw new IllegalArgumentException("Invalid BlockData: " + blockData.getClass().getName());
 
-    Bed bed = ((Bed) blockData);
     BlockState head, foot;
 
     if (bed.getPart() == Bed.Part.HEAD) {

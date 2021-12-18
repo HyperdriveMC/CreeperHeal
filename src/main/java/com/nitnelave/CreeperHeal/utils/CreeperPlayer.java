@@ -109,8 +109,7 @@ public class CreeperPlayer {
   @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
-    if (!(obj instanceof CreeperPlayer)) return false;
-    CreeperPlayer other = (CreeperPlayer) obj;
+    if (!(obj instanceof CreeperPlayer other)) return false;
     return player.getName().equals(other.player.getName());
   }
 

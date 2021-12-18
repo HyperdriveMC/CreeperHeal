@@ -194,18 +194,10 @@ class ConfigUpdater {
   static void importFrom(int version) {
     try {
       switch (version) {
-        case 4:
-          from4();
-          break;
-        case 5:
-          from5();
-          break;
-        case 6:
-        case 7:
-          from6();
-          break;
-        default:
-          CreeperLog.warning("Trying to import from an unknown config version.");
+        case 4 -> from4();
+        case 5 -> from5();
+        case 6, 7 -> from6();
+        default -> CreeperLog.warning("Trying to import from an unknown config version.");
       }
     } catch (Exception e) {
       e.printStackTrace();

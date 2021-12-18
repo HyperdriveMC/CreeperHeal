@@ -139,13 +139,8 @@ abstract class WorldConfigImporter {
     WorldConfig w = new WorldConfig(name);
     CreeperLog.logInfo("Importing settings for world : " + name, 1);
     switch (version) {
-      case 5:
-      case 6:
-      case 7:
-        from6(name);
-        break;
-      default:
-        CreeperLog.warning("Trying to import a world from an unknown (too old?) version.");
+      case 5, 6, 7 -> from6(name);
+      default -> CreeperLog.warning("Trying to import a world from an unknown (too old?) version.");
     }
     storeSettings(w);
     File f = new File(CreeperHeal.getCHFolder() + "/" + name + ".yml");

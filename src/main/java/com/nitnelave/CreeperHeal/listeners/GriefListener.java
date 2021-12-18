@@ -88,8 +88,7 @@ public class GriefListener implements Listener {
    */
   @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
   public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-    if (event.getEntity() instanceof Player && !event.getEntity().hasMetadata("NPC")) {
-      Player attacked = (Player) event.getEntity();
+    if (event.getEntity() instanceof Player attacked && !event.getEntity().hasMetadata("NPC")) {
       Player offender = null;
       String message = attacked.getDisplayName();
       Entity attacker;

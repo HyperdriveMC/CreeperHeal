@@ -28,9 +28,7 @@ class CreeperContainer extends CreeperMultiblock {
     super(blockState);
 
     Inventory inv = blockState.getInventory();
-    if (!(inv instanceof DoubleChestInventory)) return;
-
-    DoubleChestInventory doubleChest = ((DoubleChestInventory) inv);
+    if (!(inv instanceof DoubleChestInventory doubleChest)) return;
 
     Location location = doubleChest.getRightSide().getLocation();
     if (location == null) return;

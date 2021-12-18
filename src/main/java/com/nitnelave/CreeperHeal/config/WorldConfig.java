@@ -60,39 +60,22 @@ public class WorldConfig {
         booleans.put(v.getKey(), new BooleanConfigValue(v, getFile(v)));
       else
         switch (v) {
-          case REPAIR_TIME:
-            repairTime = new IntegerConfigValue(v, getFile(v));
-            break;
-          case REPLACE_LIMIT:
-            replaceLimit = new IntegerConfigValue(v, getFile(v));
-            break;
-          case REPLACE_BLACK_LIST:
-            replaceBlackList = new MaterialListValue(v, getFile(v));
-            break;
-          case REPLACE_WHITE_LIST:
-            replaceWhiteList = new MaterialListValue(v, getFile(v));
-            break;
-          case GRIEF_PLACE_LIST:
-            griefPlaceList = new MaterialListValue(v, getFile(v));
-            break;
-          case PROTECTED_LIST:
-            protectList = new MaterialListValue(v, getFile(v));
-            break;
-          default:
-            CreeperLog.warning("Unknown config value : " + v);
+          case REPAIR_TIME -> repairTime = new IntegerConfigValue(v, getFile(v));
+          case REPLACE_LIMIT -> replaceLimit = new IntegerConfigValue(v, getFile(v));
+          case REPLACE_BLACK_LIST -> replaceBlackList = new MaterialListValue(v, getFile(v));
+          case REPLACE_WHITE_LIST -> replaceWhiteList = new MaterialListValue(v, getFile(v));
+          case GRIEF_PLACE_LIST -> griefPlaceList = new MaterialListValue(v, getFile(v));
+          case PROTECTED_LIST -> protectList = new MaterialListValue(v, getFile(v));
+          default -> CreeperLog.warning("Unknown config value : " + v);
         }
   }
 
   private YamlConfiguration getFile(WCfgVal v) {
-    switch (v.getFile()) {
-      case ADVANCED:
-        return advanced;
-      case CONFIG:
-        return config;
-      case GRIEF:
-        return grief;
-    }
-    return null;
+    return switch (v.getFile()) {
+      case ADVANCED -> advanced;
+      case CONFIG -> config;
+      case GRIEF -> grief;
+    };
   }
 
   /**
@@ -194,25 +177,16 @@ public class WorldConfig {
   public boolean shouldReplace(Entity entity) {
     if (getBool(WCfgVal.WORLD_ON)) {
       if (entity != null)
-        switch (entity.getType()) {
-          case CREEPER:
-            return getBool(WCfgVal.CREEPERS) && isAbove(entity.getLocation());
-          case PRIMED_TNT:
-            return getBool(WCfgVal.TNT) && isAbove(entity.getLocation());
-          case FIREBALL:
-            return getBool(WCfgVal.GHAST) && isAbove(entity.getLocation());
-          case ENDER_DRAGON:
-            return getBool(WCfgVal.DRAGONS);
-          case WITHER:
-          case WITHER_SKULL:
-            return getBool(WCfgVal.WITHER);
-          case MINECART_TNT:
-            return getBool(WCfgVal.MINECART_TNT);
-          case ENDER_CRYSTAL:
-            return getBool(WCfgVal.ENDER_CRYSTAL);
-          default:
-            return getBool(WCfgVal.CUSTOM);
-        }
+        return switch (entity.getType()) {
+          case CREEPER -> getBool(WCfgVal.CREEPERS) && isAbove(entity.getLocation());
+          case PRIMED_TNT -> getBool(WCfgVal.TNT) && isAbove(entity.getLocation());
+          case FIREBALL -> getBool(WCfgVal.GHAST) && isAbove(entity.getLocation());
+          case ENDER_DRAGON -> getBool(WCfgVal.DRAGONS);
+          case WITHER, WITHER_SKULL -> getBool(WCfgVal.WITHER);
+          case MINECART_TNT -> getBool(WCfgVal.MINECART_TNT);
+          case ENDER_CRYSTAL -> getBool(WCfgVal.ENDER_CRYSTAL);
+          default -> getBool(WCfgVal.CUSTOM);
+        };
       return getBool(WCfgVal.CUSTOM);
     }
     return false;
@@ -307,33 +281,19 @@ public class WorldConfig {
    */
   public void setInt(WCfgVal key, int value) throws NullPointerException {
     switch (key) {
-      case REPAIR_TIME:
-        repairTime.setValue(value);
-        break;
-      case REPLACE_LIMIT:
-        replaceLimit.setValue(value);
-        break;
-      default:
-        throw new NullPointerException("Unknown config key path : " + key.getKey());
+      case REPAIR_TIME -> repairTime.setValue(value);
+      case REPLACE_LIMIT -> replaceLimit.setValue(value);
+      default -> throw new NullPointerException("Unknown config key path : " + key.getKey());
     }
   }
 
   void setList(WCfgVal val, HashSet<Material> value) {
     switch (val) {
-      case REPLACE_BLACK_LIST:
-        replaceBlackList.setValue(value);
-        break;
-      case REPLACE_WHITE_LIST:
-        replaceWhiteList.setValue(value);
-        break;
-      case PROTECTED_LIST:
-        protectList.setValue(value);
-        break;
-      case GRIEF_PLACE_LIST:
-        griefPlaceList.setValue(value);
-        break;
-      default:
-        CreeperLog.warning("Wrong key type : " + val);
+      case REPLACE_BLACK_LIST -> replaceBlackList.setValue(value);
+      case REPLACE_WHITE_LIST -> replaceWhiteList.setValue(value);
+      case PROTECTED_LIST -> protectList.setValue(value);
+      case GRIEF_PLACE_LIST -> griefPlaceList.setValue(value);
+      default -> CreeperLog.warning("Wrong key type : " + val);
     }
   }
 

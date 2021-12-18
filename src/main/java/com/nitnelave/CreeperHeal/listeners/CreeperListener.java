@@ -89,17 +89,14 @@ public class CreeperListener implements Listener {
   public void onHangingBreak(HangingBreakEvent event) {
     Hanging h = event.getEntity();
     switch (event.getCause()) {
-      case EXPLOSION:
-        ExplodedBlockManager.recordHanging(h);
-        break;
-      case PHYSICS:
-      case OBSTRUCTION:
+      case EXPLOSION -> ExplodedBlockManager.recordHanging(h);
+      case PHYSICS, OBSTRUCTION -> {
         WorldConfig world = CreeperConfig.getWorld(h.getWorld());
         if (BurntBlockManager.isNextToFire(h.getLocation()) && world.getBool(WCfgVal.FIRE))
           BurntBlockManager.recordBurntBlock(
               new CreeperBurntBlock(new Date(), CreeperHanging.newHanging(h)));
-        break;
-      default:
+      }
+      default -> {}
     }
   }
 

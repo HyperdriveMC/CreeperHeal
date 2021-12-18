@@ -59,13 +59,7 @@ public class CreeperJukebox extends CreeperBlock {
     else super.update();
   }
 
-  private static class RecordDropListener implements Listener {
-
-    private final Material record;
-
-    private RecordDropListener(Material record) {
-      this.record = record;
-    }
+  private record RecordDropListener(Material record) implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onItemSpawn(ItemSpawnEvent event) {

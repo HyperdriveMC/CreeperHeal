@@ -131,8 +131,7 @@ public class CreeperCommandManager implements CommandExecutor {
 
     boolean admin = true, heal = true, healNear = true, healNearOther = true;
 
-    if (sender instanceof Player) {
-      Player player = (Player) sender;
+    if (sender instanceof Player player) {
       admin = checkPermissions(player, "admin");
       heal = admin || checkPermissions(player, "heal");
       healNearOther = heal || checkPermissions(player, "heal.near.all");
@@ -292,8 +291,7 @@ public class CreeperCommandManager implements CommandExecutor {
    * @param args The command arguments.
    */
   private void healNear(CommandSender sender, String[] args) {
-    if (sender instanceof Player) {
-      Player player = (Player) sender;
+    if (sender instanceof Player player) {
       boolean hasPermission = checkPermissions(player, "heal", "admin", "heal.near.all");
       Player target;
       if (args.length > 1) {
@@ -341,8 +339,7 @@ public class CreeperCommandManager implements CommandExecutor {
    */
   private void enable(boolean enable, WorldConfig currentWorld, CommandSender sender) {
     boolean hasPerm = true;
-    if (sender instanceof Player) {
-      Player player = (Player) sender;
+    if (sender instanceof Player player) {
       hasPerm = checkPermissions(player, "admin");
     }
     if (hasPerm) {

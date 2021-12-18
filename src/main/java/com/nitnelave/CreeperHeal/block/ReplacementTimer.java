@@ -87,8 +87,7 @@ public class ReplacementTimer {
   @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
-    if (!(obj instanceof ReplacementTimer)) return false;
-    ReplacementTimer other = (ReplacementTimer) obj;
+    if (!(obj instanceof ReplacementTimer other)) return false;
     if (time == null) {
       if (other.time != null) return false;
     } else if (!time.equals(other.time)) return false;

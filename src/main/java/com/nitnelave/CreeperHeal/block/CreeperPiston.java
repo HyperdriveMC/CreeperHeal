@@ -19,9 +19,8 @@ class CreeperPiston extends CreeperMultiblock {
 
     BlockData blockData = blockState.getBlockData();
 
-    if (blockData instanceof Piston) {
+    if (blockData instanceof Piston piston) {
 
-      Piston piston = ((Piston) blockData);
       Block headBlock = blockState.getBlock().getRelative(piston.getFacing());
       BlockData headBlockData = headBlock.getBlockData();
 
@@ -30,9 +29,8 @@ class CreeperPiston extends CreeperMultiblock {
         this.dependents.add(headBlock.getState());
       }
 
-    } else if (blockData instanceof PistonHead) {
+    } else if (blockData instanceof PistonHead piston) {
 
-      PistonHead piston = ((PistonHead) blockData);
       Block pistonBlock = blockState.getBlock().getRelative(piston.getFacing().getOppositeFace());
       BlockData pistonBlockData = pistonBlock.getBlockData();
 
