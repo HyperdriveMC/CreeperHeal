@@ -41,7 +41,7 @@ public class NeighborDateLoc extends NeighborFinder<DateLoc> {
   public void clean() {
     Date delay =
         new Date(
-            new Date().getTime() - 200 * CreeperConfig.getInt(CfgVal.BLOCK_PER_BLOCK_INTERVAL));
+            new Date().getTime() - 200L * CreeperConfig.getInt(CfgVal.BLOCK_PER_BLOCK_INTERVAL));
     map.values()
         .removeIf(
             list -> {

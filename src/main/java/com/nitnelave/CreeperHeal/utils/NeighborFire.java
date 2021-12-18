@@ -47,8 +47,8 @@ public class NeighborFire extends NeighborFinder<CreeperBurntBlock> {
     Date delay =
         new Date(
             new Date().getTime()
-                - 1000 * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL_BURNT)
-                + 4000000 * CreeperConfig.getInt(CfgVal.BLOCK_PER_BLOCK_INTERVAL));
+                - 1000L * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL_BURNT)
+                + 4000000L * CreeperConfig.getInt(CfgVal.BLOCK_PER_BLOCK_INTERVAL));
     map.values()
         .removeIf(
             list -> {

@@ -34,7 +34,7 @@ public class CreeperBurntBlock {
     boolean timed = block != null && CreeperConfig.getWorld(getWorld()).isRepairTimed();
     timer =
         new ReplacementTimer(
-            new Date(now.getTime() + 1000 * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL_BURNT)),
+            new Date(now.getTime() + 1000L * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL_BURNT)),
             timed);
   }
 

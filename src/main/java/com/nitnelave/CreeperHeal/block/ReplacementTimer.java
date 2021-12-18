@@ -32,7 +32,7 @@ public class ReplacementTimer {
    */
   public boolean postPone(int delay) {
     if (postponed) return false;
-    time = new Date(time.getTime() + 1000 * delay);
+    time = new Date(time.getTime() + 1000L * delay);
     postponed = true;
     return true;
   }

@@ -56,7 +56,7 @@ public class RailsIndex {
 
     Date delay =
         new Date(
-            new Date().getTime() - 200 * CreeperConfig.getInt(CfgVal.BLOCK_PER_BLOCK_INTERVAL));
+            new Date().getTime() - 200L * CreeperConfig.getInt(CfgVal.BLOCK_PER_BLOCK_INTERVAL));
     railsIndex.values().removeIf(date -> date.before(delay));
   }
 }

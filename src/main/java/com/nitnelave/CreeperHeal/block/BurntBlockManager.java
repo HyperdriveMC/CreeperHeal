@@ -60,7 +60,7 @@ public abstract class BurntBlockManager {
     World world = Bukkit.getServer().getWorld(worldConfig.getName());
 
     int waitBeforeBurn = CreeperConfig.getInt(CfgVal.WAIT_BEFORE_BURN_AGAIN);
-    Date time = new Date(new Date().getTime() + 1000 * waitBeforeBurn);
+    Date time = new Date(new Date().getTime() + 1000L * waitBeforeBurn);
     burntList.removeIf(
         burnt -> {
           if (burnt.getWorld() != world) return false;
@@ -81,7 +81,7 @@ public abstract class BurntBlockManager {
     burntList.forEach(burnt -> burnt.replace(true));
 
     if (waitBeforeBurn > 0) {
-      Date time = new Date(new Date().getTime() + 1000 * waitBeforeBurn);
+      Date time = new Date(new Date().getTime() + 1000L * waitBeforeBurn);
       burntList.forEach(burnt -> recentlyBurnt.put(burnt.getLocation(), time));
     }
 
@@ -94,7 +94,7 @@ public abstract class BurntBlockManager {
   private static void replaceBurnt() {
 
     int waitBeforeBurn = CreeperConfig.getInt(CfgVal.WAIT_BEFORE_BURN_AGAIN);
-    Date time = new Date(new Date().getTime() + 1000 * waitBeforeBurn);
+    Date time = new Date(new Date().getTime() + 1000L * waitBeforeBurn);
     Iterator<CreeperBurntBlock> iter = burntList.iterator();
     while (iter.hasNext()) {
       CreeperBurntBlock cBlock = iter.next();

@@ -46,7 +46,7 @@ public class CreeperExplosion {
     world = CreeperConfig.getWorld(Objects.requireNonNull(loc.getWorld()));
     timer =
         new ReplacementTimer(
-            new Date(new Date().getTime() + 1000 * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL)),
+            new Date(new Date().getTime() + 1000L * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL)),
             world.isRepairTimed());
     blockList = new LinkedList<>();
     this.loc = loc;
@@ -60,7 +60,7 @@ public class CreeperExplosion {
   public void addBlocks(List<Block> blocks, Location newLoc) {
     timer =
         new ReplacementTimer(
-            new Date(new Date().getTime() + 1000 * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL)),
+            new Date(new Date().getTime() + 1000L * CreeperConfig.getInt(CfgVal.WAIT_BEFORE_HEAL)),
             world.isRepairTimed());
     loc =
         new Location(
@@ -157,8 +157,7 @@ public class CreeperExplosion {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (o instanceof CreeperExplosion) {
-      CreeperExplosion e = (CreeperExplosion) o;
+    if (o instanceof CreeperExplosion e) {
       return e.timer == timer && e.loc == loc && e.radius == radius;
     }
     return false;
