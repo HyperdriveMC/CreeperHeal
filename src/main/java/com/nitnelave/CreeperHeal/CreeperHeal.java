@@ -13,13 +13,11 @@ import com.nitnelave.CreeperHeal.listeners.GriefListener;
 import com.nitnelave.CreeperHeal.listeners.LeavesListener;
 import com.nitnelave.CreeperHeal.listeners.RailsUpdateListener;
 import com.nitnelave.CreeperHeal.utils.CreeperLog;
-import com.nitnelave.CreeperHeal.utils.MetricsLite;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * The main class of the CreeperHeal plugin. The main aim of this plugin is to replace the damage
@@ -74,12 +72,6 @@ public class CreeperHeal extends JavaPlugin {
     instance = this;
     CreeperCommandManager.registerCommands();
     registerEvents();
-    try {
-      MetricsLite metrics = new MetricsLite(this);
-      metrics.start();
-    } catch (IOException e) {
-      CreeperLog.warning("Could not submit data to MC-Stats");
-    }
   }
 
   /*
