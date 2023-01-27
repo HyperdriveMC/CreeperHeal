@@ -257,6 +257,9 @@ public class CreeperBlock implements Replaceable
             return new CreeperPhysicsBlock(state);
         switch (state.getType())
         {
+          case PLAYER_HEAD:
+          case PLAYER_WALL_HEAD:
+              return new CreeperPlayerHead(state);
           case WHITE_BED:
           case ORANGE_BED:
           case MAGENTA_BED:
